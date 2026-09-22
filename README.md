@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="assets/logo.png" alt="" width="110">
-</p>
-
-<h1 align="center">GUISE: LLM Safety Evaluation Across Framings and Cultures</h1>
+# <img width="70" height="70" alt="image" src="assets/logo.png" />GUISE: LLM Safety Evaluation Across Framings and Cultures</h1>
 
 **G**rounded **U**plift-focused **I**nvestigation of **S**afety across **E**xpressions — a
 multilingual benchmark of criminal-assistance prompts sourced from real-world cases,
