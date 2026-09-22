@@ -1,4 +1,4 @@
-# GUISE
+# 🥸 GUISE: LLM Safety Evaluation Across Framings and Cultures
 
 **G**rounded **U**plift-focused **I**nvestigation of **S**afety across **E**xpressions — a
 multilingual benchmark of criminal-assistance prompts sourced from real-world cases,
