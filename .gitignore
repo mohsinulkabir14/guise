@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Editors
+.vscode/
+.idea/
+
+# Spreadsheet / office lock files
+~$*
+
+# Raw model outputs are not redistributed (see docs/ and results/README.md).
+# Drop scored response CSVs here locally to re-run code/score_responses.py.
+responses/
+*_scored.csv
+
+# The prompt set ships as a password-protected archive, never in plaintext.
+# Keep the local working copies out of git. See data/prompts/README.md.
+data/prompts/*.csv
+!data/prompts/README.md
