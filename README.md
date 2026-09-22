@@ -1,4 +1,8 @@
-# 🥸 GUISE: LLM Safety Evaluation Across Framings and Cultures
+<p align="center">
+  <img src="assets/logo.png" alt="" width="110">
+</p>
+
+<h1 align="center">GUISE: LLM Safety Evaluation Across Framings and Cultures</h1>
 
 **G**rounded **U**plift-focused **I**nvestigation of **S**afety across **E**xpressions — a
 multilingual benchmark of criminal-assistance prompts sourced from real-world cases,
@@ -117,6 +121,7 @@ rated a ~33% sample for fluency, cultural naturalness, and harm equivalence.
 │   ├── package_prompts.sh   # rebuild the password-protected archive
 │   ├── scoring.ipynb        # original analysis notebook
 │   └── requirements.txt
+├── assets/               # README logo
 ├── LICENSE               # CC BY-NC 4.0
 └── README.md
 ```
