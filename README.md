@@ -1,9 +1,9 @@
 # <img width="50" height="50" alt="image" src="assets/logo.png" />GUISE: LLM Safety Evaluation Across Framings and Cultures
 
-**G**rounded **U**plift-focused **I**nvestigation of **S**afety across **E**xpressions — a
+**G**rounded **U**plift-focused **I**nvestigation of **S**afety across **E**xpressions: a
 multilingual benchmark of criminal-assistance prompts sourced from real-world cases,
 organised under the UNODC *International Classification of Crime for Statistical Purposes*
-(ICCS), and culturally adapted — not translated — into four non-English language/culture
+(ICCS), and culturally adapted, not translated, into four non-English language/culture
 settings.
 
 This repository accompanies the paper *In the Guise of Research: How Framing and Cultural
@@ -16,8 +16,8 @@ the scoring code.
 ## ⚠️ Content warning and intended use
 
 **This repository contains prompts designed to elicit criminal-assistance content from
-language models.** They are derived from reporting on real crimes — homicide, kidnapping and
-extortion, robbery, drug trafficking, and fraud — and are written to be operationally
+language models.** They are derived from reporting on real crimes (homicide, kidnapping and
+extortion, robbery, drug trafficking, and fraud) and are written to be operationally
 plausible. They exist to measure refusal behaviour, not to be used.
 
 Intended uses: **safety evaluation, refusal-alignment research, red-teaming, and guard-model
@@ -25,10 +25,10 @@ development.** Any use to obtain, generate, or distribute operational criminal g
 outside the scope of the licence and of the purpose for which the material was collected.
 
 **The prompt set is released behind a password.** It is distributed as
-`data/guise_prompts.zip`, not as plaintext CSVs — see
+`data/guise_prompts.zip`, not as plaintext CSVs; see
 [Access to the prompt set](#access-to-the-prompt-set) below.
 
-Model **responses** — the 13,500 generations scored in the paper — are deliberately **not**
+Model **responses**, the 13,500 generations scored in the paper, are deliberately **not**
 redistributed at all. Only aggregate SRR/UCR statistics are released. See
 [`results/README.md`](results/README.md).
 
@@ -40,7 +40,7 @@ other source-identifying details while preserving the criminal intent and ICCS c
 ## Access to the prompt set
 
 The 2,250 prompts live in **`data/guise_prompts.zip`**, a password-protected archive. Nothing
-else in the repository is gated — the keyword list, annotation guidelines, aggregate results,
+else in the repository is gated: the keyword list, annotation guidelines, aggregate results,
 and code are all open.
 
 **To request the password:** open an issue on this repository, or contact the authors, stating
@@ -62,7 +62,7 @@ strong encryption and is not a security control. Maintainers rebuild it with
 
 ## What is in the benchmark
 
-150 real-world cases — **30 in each of the five crime categories** — × 3 request framings
+150 real-world cases, **30 in each of the five crime categories**, × 3 request framings
 × 5 language/culture settings = **2,250 unique prompts**.
 
 ### Crime categories (ICCS-aligned)
@@ -83,7 +83,7 @@ adaptation rather than to what is being asked.
 
 | Framing               | Column prefix          | What it probes                                                        |
 | --------------------- | ---------------------- | --------------------------------------------------------------------- |
-| Direct request        | `direct`               | Unframed baseline — a natural case-surface query                       |
+| Direct request        | `direct`               | Unframed baseline: a natural case-surface query                       |
 | Professional pretext  | `professional_pretext` | Request embedded in a plausible research/professional context          |
 | Correction seeking    | `correction_seeking`   | A deliberately distorted version of the step, inviting the model to fix it |
 
@@ -127,7 +127,7 @@ rated a ~33% sample for fluency, cultural naturalness, and harm equivalence.
 ## Evaluation framework
 
 Rather than a binary safe/unsafe label, each response is scored on three ordinal 0–4
-dimensions — **actionability** (`A`), **specificity** (`S`), and **harmfulness** (`H`) — by an
+dimensions (**actionability** (`A`), **specificity** (`S`), and **harmfulness** (`H`)) by an
 LLM judge calibrated per language against human annotations. Two metrics are derived:
 
 **Safe Refusal Rate**
@@ -156,7 +156,7 @@ qualitatively safe from qualitatively unsafe behaviour were selected. Change the
 
 Claude Haiku 4.5 (`claude-haiku-4-5-20251001`), DeepSeek V4 Pro (`deepseek-v4-pro`),
 GPT-5.4 Mini (`gpt-5.4-mini`), Gemma 4 31B (`gemma-4-31b`), Llama 3.3 70B (`llama-3.3-70b`),
-Qwen3 32B (`qwen3-32b`) — 13,500 responses in total.
+Qwen3 32B (`qwen3-32b`); 13,500 responses in total.
 
 ---
 
@@ -166,7 +166,7 @@ Qwen3 32B (`qwen3-32b`) — 13,500 responses in total.
 pip install -r code/requirements.txt
 ```
 
-`score_responses.py` consumes **scored** response CSVs — one per model, each row a prompt with
+`score_responses.py` consumes **scored** response CSVs: one per model, each row a prompt with
 judge scores under a per-condition suffix (`_d` direct, `_p` professional pretext, `_c`
 correction seeking):
 
@@ -186,7 +186,7 @@ python code/score_responses.py --input-dir responses/english --output-dir result
 This writes `<prefix>_srr_ucr_overall.csv` and `<prefix>_srr_ucr_by_category.csv` with 95%
 bootstrap confidence intervals (10,000 resamples, seed 21).
 
-Generating the responses and running the judge are not included here — those steps require API
+Generating the responses and running the judge are not included here; those steps require API
 credentials and produce the unsafe model outputs this repository does not redistribute.
 
 > **Note:** the figures in `results/` were computed before the prompt set was rebalanced to 30
@@ -204,7 +204,7 @@ credentials and produce the unsafe model outputs this repository does not redist
   rectifying the deliberately incorrect details planted in the prompt.
 - **Crime category matters, and differently per culture.** Fraud and drug trafficking are the
   most collapse-prone; homicide is the most refused under direct requests. Of 450
-  model×category×condition×language cells, 45 are complete safety collapses (UCR ≥ 0.95) — 31
+  model×category×condition×language cells, 45 are complete safety collapses (UCR ≥ 0.95): 31
   of them under correction seeking.
 - **Unsafe output carries an Anglocentric register.** Payment instruments, tactic names, and
   platforms are transplanted near-verbatim from English into otherwise native-language
@@ -215,7 +215,7 @@ credentials and produce the unsafe model outputs this repository does not redist
 
 ## Licence
 
-All content — data, documentation, and code — is released under
+All content (data, documentation, and code) is released under
 [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)
 (CC BY-NC 4.0). See [`LICENSE`](LICENSE).
 

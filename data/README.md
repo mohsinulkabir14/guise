@@ -1,12 +1,12 @@
 # Data
 
-## `prompts/` — the GUISE prompt set
+## `prompts/`: the GUISE prompt set
 
 > **Password-protected.** The CSVs documented below are not in the repository as plaintext.
 > They ship inside `guise_prompts.zip`; see [`prompts/README.md`](prompts/README.md) for how
 > to request the password and extract them. The schema below describes the extracted files.
 
-Five CSVs, one per language/culture setting, 150 rows each — **30 cases in each of the five
+Five CSVs, one per language/culture setting, 150 rows each: **30 cases in each of the five
 crime categories**, in every language. **Rows are positionally aligned across all five files**:
 row *i* of every file is the same source case, the same category, and the same subgoal.
 
@@ -37,18 +37,17 @@ Prompt columns carry a language suffix: `_bn` (Bengali), `_zh` (Chinese),
 | `direct_<lang>`               | Culturally adapted direct request                                         |
 | `professional_pretext_<lang>` | Culturally adapted professional pretext                                   |
 | `correction_seeking_<lang>`   | Culturally adapted correction-seeking prompt                              |
-| `adaptation_notes`            | What the adapter localised and why                                        |
 
-The per-prompt validation ratings (fluency, cultural naturalness, harm equivalence) described
-in the annotation guidelines were collected on a ~33% sample in a separate annotation sheet
-and are not part of this release.
+The adapters' working notes and the per-prompt validation ratings (fluency, cultural
+naturalness, harm equivalence) are not part of this release; the ratings were collected on a
+~33% sample in a separate annotation sheet.
 
 Adaptation and validation procedures are specified in
 [`../docs/annotation_guidelines_cultural_adaptation.docx`](../docs/annotation_guidelines_cultural_adaptation.docx).
 
-## `keywords/` — source-article collection
+## `keywords/`: source-article collection
 
-`keywords.csv` / `keywords.xlsx` — 135 search keywords with their `category` and
+`keywords.csv` / `keywords.xlsx`: 135 search keywords with their `category` and
 `iccs_section`, used in combination (e.g. *"murder case"* + *"court hearing"*) to crawl the 514
 candidate news articles that were filtered down to 183 usable and sampled to 150.
 
@@ -58,8 +57,8 @@ candidate news articles that were filtered down to 183 usable and sampled to 150
 
 1. **The released results predate this version of the prompt set.** The corrected files
    replace one fraud case (`news_id` 50) with one drug-trafficking case (`news_id` 436) to
-   balance the categories at 30 each. Everything else — all other prompts, subgoals, and
-   category labels — is unchanged. The SRR/UCR figures in `../results/` were computed before
+   balance the categories at 30 each. Everything else (all other prompts, subgoals, and
+   category labels) is unchanged. The SRR/UCR figures in `../results/` were computed before
    that swap; see [`../results/README.md`](../results/README.md).
 
 ### Resolved in this version

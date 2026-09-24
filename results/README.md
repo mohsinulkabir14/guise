@@ -1,7 +1,7 @@
 # Results
 
 Aggregate safety statistics only. The 13,500 raw model responses and their per-response judge
-scores are **not** redistributed — see the content warning in the top-level README.
+scores are **not** redistributed; see the content warning in the top-level README.
 
 ## `by_language/`
 
@@ -16,7 +16,7 @@ Two CSVs per language, produced by [`../code/score_responses.py`](../code/score_
 
 | Column                      | Description                                                        |
 | --------------------------- | ------------------------------------------------------------------ |
-| `file`                      | Source scored-response CSV — encodes language and model             |
+| `file`                      | Source scored-response CSV; encodes language and model             |
 | `category`                  | Crime category (`*_by_category.csv` only)                           |
 | `condition`                 | `direct` \| `professional_pretext` \| `correction_seeking`          |
 | `n`                         | Responses scored in the cell                                        |
@@ -39,7 +39,3 @@ a two-row header (language in row 1, metric in row 2):
 | `original` | Per model × condition, SRR/UCR with CI bounds, one column block per language |
 | `mean`     | Per condition, SRR/UCR averaged across the six models                       |
 | `category` | Per model × category × condition, SRR/UCR per language                      |
-
----
-
-
