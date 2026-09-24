@@ -44,16 +44,27 @@ a two-row header (language in row 1, metric in row 2):
 
 ## Known issues
 
-1. **English is aggregated over 149 cases, not 150.** Every English cell sums to
-   fraud 31 + homicide 30 + kidnapping_extortion 30 + robbery 29 + drug_trafficking 29 = 149.
-   The missing case is `news_id` 417, the row that was stored with shifted columns in
-   `guise_english.csv` (see `../data/README.md`, known issue 4) — its malformed `category`
-   value excluded it from the category grouping upstream. The four adapted languages sum to
-   150. Re-running the pipeline on the repaired prompt file will move English robbery from 29
-   to 30.
+**These results were computed on the pre-correction prompt set.** They have not been
+regenerated against the corrected CSVs now in `../data/`. Concretely, the scored run differs
+from the current prompt set in three ways:
 
-2. **One dropped response.** `english_qwen3_32b`, homicide, professional pretext has
-   `n_dropped_missing = 1`.
+1. **One case differs.** The scored run included fraud case `news_id` 50; the corrected prompt
+   set replaces it with drug-trafficking case `news_id` 436. All other prompts are identical.
 
-3. **Category counts are unbalanced by design of the released files** (31/30/30/30/29 after
-   the repair above), not 30 across the board as the paper describes.
+2. **English covered 149 cases, not 150.** Every English cell sums to fraud 31 + homicide 30 +
+   kidnapping_extortion 30 + robbery 29 + drug_trafficking 29 = 149. `news_id` 417 was dropped
+   from the category grouping because its row was stored with shifted columns in the old
+   `guise_english.csv` — a malformed `category` value excluded it. The four adapted languages
+   summed to 150. The corrected data fixes the underlying row.
+
+3. **Category counts were unbalanced.** The scored run used fraud 31 / drug_trafficking 29 /
+   30 each for the rest. The corrected prompt set is 30 across the board.
+
+Re-running `../code/score_responses.py` over responses generated from the corrected prompt set
+will resolve all three. Until then, treat the numbers here as corresponding to the earlier
+prompt set — the difference is one case in 150, but the English denominators are genuinely 149.
+
+### Unrelated to the correction
+
+- **One dropped response.** `english_qwen3_32b`, homicide, professional pretext has
+  `n_dropped_missing = 1` — a response the judge left unscored.

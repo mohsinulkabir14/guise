@@ -6,8 +6,9 @@
 > They ship inside `guise_prompts.zip`; see [`prompts/README.md`](prompts/README.md) for how
 > to request the password and extract them. The schema below describes the extracted files.
 
-Five CSVs, one per language/culture setting, 150 rows each. **Rows are positionally aligned
-across all five files**: row *i* of every file is the same source case and the same subgoal.
+Five CSVs, one per language/culture setting, 150 rows each — **30 cases in each of the five
+crime categories**, in every language. **Rows are positionally aligned across all five files**:
+row *i* of every file is the same source case, the same category, and the same subgoal.
 
 ### Common columns
 
@@ -37,13 +38,14 @@ Prompt columns carry a language suffix: `_bn` (Bengali), `_zh` (Chinese),
 | `professional_pretext_<lang>` | Culturally adapted professional pretext                                   |
 | `correction_seeking_<lang>`   | Culturally adapted correction-seeking prompt                              |
 | `adaptation_notes`            | What the adapter localised and why                                        |
-| `annotator_notes`             | Free-text notes from the native adapter                                   |
-| `fluency`                     | Validation rating, 4-point Likert (0–3) — **see "Known issues" below**    |
-| `cultural_naturalness`        | Validation rating, 4-point Likert (0–3) — **see "Known issues" below**    |
-| `harm_equivalence`            | Validation rating, 4-point Likert (0–3) — **see "Known issues" below**    |
 
 `guise_greek.csv` additionally carries `direct_en`, a copy of the English source prompt kept
-alongside the adaptation.
+alongside the adaptation — redundant with `guise_english.csv`, which is authoritative (see
+"Known issues").
+
+The per-prompt validation ratings (fluency, cultural naturalness, harm equivalence) described
+in the annotation guidelines were collected on a ~33% sample in a separate annotation sheet
+and are not part of this release.
 
 Adaptation and validation procedures are specified in
 [`../docs/annotation_guidelines_cultural_adaptation.docx`](../docs/annotation_guidelines_cultural_adaptation.docx).
@@ -61,23 +63,26 @@ candidate news articles that were filtered down to 183 usable and sampled to 150
 These are properties of the released data, not of the loader — read them before joining or
 aggregating.
 
-1. **Validation ratings are empty.** The `fluency`, `cultural_naturalness`, and
-   `harm_equivalence` columns are present but unpopulated in all four adapted files. The
-   ~33%-sample ratings reported in the paper (Figure 6) were collected in a separate
-   annotation sheet that is not in this repository. The column headers are retained so the
-   schema matches the guidelines.
-
-2. **`news_id` is not unique.** `news_id` 329 appears twice in every file. The two rows are
+1. **`news_id` is not unique.** `news_id` 329 appears twice in every file. The two rows are
    *distinct* fraud cases with different subgoals and different prompts — the collision is in
    the article identifier, not the content. **Join across languages by row position, not by
    `news_id`.**
 
-3. **Category counts are not perfectly balanced.** The paper describes 30 cases per category;
-   the released files are fraud 31, homicide 30, kidnapping_extortion 30, robbery 30,
-   drug_trafficking 29.
+2. **`guise_greek.csv`'s `direct_en` column is stale in two rows.** For `news_id` 417 it holds
+   the professional-pretext text rather than the direct request, and for `news_id` 146 it holds
+   an earlier wording of the direct request. The Greek prompts themselves (`direct_el`,
+   `professional_pretext_el`, `correction_seeking_el`) are unaffected. `guise_english.csv` is
+   the authoritative English source; treat `direct_en` as a convenience copy only.
 
-4. **One repaired row.** In `guise_english.csv`, the row for `news_id` 417 was stored with all
-   fields shifted one column left (`category` held the subgoal text, and
-   `correction_distortion_notes` was empty). It has been realigned to the documented schema;
-   the category `robbery` and the field order were confirmed against the four adapted files,
-   which stored the same row correctly.
+3. **The released results predate this version of the prompt set.** The corrected files
+   replace one fraud case (`news_id` 50) with one drug-trafficking case (`news_id` 436) to
+   balance the categories at 30 each. Everything else — all other prompts, subgoals, and
+   category labels — is unchanged. The SRR/UCR figures in `../results/` were computed before
+   that swap; see [`../results/README.md`](../results/README.md).
+
+### Resolved in this version
+
+- **Category balance.** Every category now holds exactly 30 cases in every language
+  (previously fraud 31, drug_trafficking 29).
+- **Column shift on `news_id` 417.** The English row is now stored against the documented
+  schema; the earlier file had every field shifted one column left.

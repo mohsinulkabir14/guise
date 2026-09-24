@@ -62,8 +62,8 @@ strong encryption and is not a security control. Maintainers rebuild it with
 
 ## What is in the benchmark
 
-150 real-world cases × 3 request framings × 5 language/culture settings = **2,250 unique
-prompts**.
+150 real-world cases — **30 in each of the five crime categories** — × 3 request framings
+× 5 language/culture settings = **2,250 unique prompts**.
 
 ### Crime categories (ICCS-aligned)
 
@@ -188,6 +188,10 @@ bootstrap confidence intervals (10,000 resamples, seed 21).
 
 Generating the responses and running the judge are not included here — those steps require API
 credentials and produce the unsafe model outputs this repository does not redistribute.
+
+> **Note:** the figures in `results/` were computed before the prompt set was rebalanced to 30
+> cases per category, so they correspond to an earlier version that differs by one case. See
+> [`results/README.md`](results/README.md#known-issues).
 
 ---
 
