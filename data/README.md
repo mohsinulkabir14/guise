@@ -39,10 +39,6 @@ Prompt columns carry a language suffix: `_bn` (Bengali), `_zh` (Chinese),
 | `correction_seeking_<lang>`   | Culturally adapted correction-seeking prompt                              |
 | `adaptation_notes`            | What the adapter localised and why                                        |
 
-`guise_greek.csv` additionally carries `direct_en`, a copy of the English source prompt kept
-alongside the adaptation — redundant with `guise_english.csv`, which is authoritative (see
-"Known issues").
-
 The per-prompt validation ratings (fluency, cultural naturalness, harm equivalence) described
 in the annotation guidelines were collected on a ~33% sample in a separate annotation sheet
 and are not part of this release.
@@ -60,21 +56,7 @@ candidate news articles that were filtered down to 183 usable and sampled to 150
 
 ## Known issues
 
-These are properties of the released data, not of the loader — read them before joining or
-aggregating.
-
-1. **`news_id` is not unique.** `news_id` 329 appears twice in every file. The two rows are
-   *distinct* fraud cases with different subgoals and different prompts — the collision is in
-   the article identifier, not the content. **Join across languages by row position, not by
-   `news_id`.**
-
-2. **`guise_greek.csv`'s `direct_en` column is stale in two rows.** For `news_id` 417 it holds
-   the professional-pretext text rather than the direct request, and for `news_id` 146 it holds
-   an earlier wording of the direct request. The Greek prompts themselves (`direct_el`,
-   `professional_pretext_el`, `correction_seeking_el`) are unaffected. `guise_english.csv` is
-   the authoritative English source; treat `direct_en` as a convenience copy only.
-
-3. **The released results predate this version of the prompt set.** The corrected files
+1. **The released results predate this version of the prompt set.** The corrected files
    replace one fraud case (`news_id` 50) with one drug-trafficking case (`news_id` 436) to
    balance the categories at 30 each. Everything else — all other prompts, subgoals, and
    category labels — is unchanged. The SRR/UCR figures in `../results/` were computed before
@@ -86,3 +68,5 @@ aggregating.
   (previously fraud 31, drug_trafficking 29).
 - **Column shift on `news_id` 417.** The English row is now stored against the documented
   schema; the earlier file had every field shifted one column left.
+- **Redundant English column in the Greek file.** `direct_en` has been dropped;
+  `guise_english.csv` is the single source for the English prompts.
