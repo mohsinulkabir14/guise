@@ -43,9 +43,15 @@ The 2,250 prompts live in **`data/guise_prompts.zip`**, a password-protected arc
 else in the repository is gated: the keyword list, annotation guidelines, aggregate results,
 and code are all open.
 
-**To request the password:** open an issue on this repository, or contact the authors, stating
-your name, affiliation, and intended use. The password is shared with researchers working on
-safety evaluation, refusal alignment, red-teaming, or guard-model development.
+**To request the password**, either:
+
+- open a [Dataset access request](../../issues/new?template=dataset-access.yml) issue on this
+  repository, **including an email address** so the password can be sent to you; or
+- email **<mdmohsinul.kabir@manchester.ac.uk>** directly.
+
+Either way, state your name, affiliation, email, and intended use. The password is shared with
+researchers working on safety evaluation, refusal alignment, red-teaming, or guard-model
+development.
 
 **To extract**, from the repository root:
 
@@ -118,6 +124,7 @@ rated a ~33% sample for fluency, cultural naturalness, and harm equivalence.
 │   ├── scoring.ipynb        # original analysis notebook
 │   └── requirements.txt
 ├── assets/               # README logo
+├── .github/              # dataset-access issue template
 ├── LICENSE               # CC BY-NC 4.0
 └── README.md
 ```

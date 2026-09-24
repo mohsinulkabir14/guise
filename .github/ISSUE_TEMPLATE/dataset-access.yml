@@ -1,0 +1,73 @@
+name: Dataset access request
+description: Request the password for the GUISE prompt archive
+title: "[Access] Password request"
+labels: ["dataset-access"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in GUISE.
+
+        The prompt set in `data/guise_prompts.zip` is password-protected because it contains
+        criminal-assistance prompts intended for safety evaluation. Please fill in the fields
+        below and **include an email address** so the password can be sent to you. GitHub
+        issues are public on a public repository, so do not post anything here you would not
+        want visible; if you would rather not share your address in the open, email
+        mdmohsinul.kabir@manchester.ac.uk instead.
+
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      placeholder: Your full name
+    validations:
+      required: true
+
+  - type: input
+    id: affiliation
+    attributes:
+      label: Affiliation
+      description: University, lab, company, or independent.
+      placeholder: e.g. University of Manchester
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Email address
+      description: >
+        Where the password will be sent. An institutional address is preferred. This is
+        required; requests without a reachable address cannot be answered.
+      placeholder: you@university.edu
+    validations:
+      required: true
+
+  - type: textarea
+    id: intended_use
+    attributes:
+      label: Intended use
+      description: >
+        What you plan to do with the prompt set. The password is shared with researchers
+        working on safety evaluation, refusal alignment, red-teaming, or guard-model
+        development.
+      placeholder: e.g. evaluating refusal behaviour of a multilingual guard model
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      options:
+        - label: >
+            I have read the content warning in the README and will use the prompts only for
+            the research purpose described above.
+          required: true
+        - label: >
+            I will not redistribute the prompts in plaintext or publish the archive password.
+          required: true
+        - label: >
+            I understand the dataset is licensed CC BY-NC 4.0 (non-commercial, attribution
+            required).
+          required: true

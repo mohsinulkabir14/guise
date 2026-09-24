@@ -6,9 +6,12 @@ operational criminal-assistance content from language models.
 
 ## Getting the password
 
-Open an issue on this repository, or contact the authors, stating your name, affiliation, and
-intended use. The password is shared with researchers working on safety evaluation,
-refusal alignment, red-teaming, or guard-model development.
+Either open a [Dataset access request](../../../../issues/new?template=dataset-access.yml)
+issue on this repository, **including an email address** so the password can be sent to you, or
+email **<mdmohsinul.kabir@manchester.ac.uk>** directly.
+
+State your name, affiliation, email, and intended use. The password is shared with researchers
+working on safety evaluation, refusal alignment, red-teaming, or guard-model development.
 
 ## Extracting
 
