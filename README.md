@@ -226,15 +226,4 @@ All content (data, documentation, and code) is released under
 [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)
 (CC BY-NC 4.0). See [`LICENSE`](LICENSE).
 
-## Citation
 
-The paper is under anonymous review; a citation will be added on acceptance.
-
-```bibtex
-@misc{guise,
-  title  = {In the Guise of Research: How Framing and Cultural Adaptation
-            Erode LLM Safety on Real-World Criminal Cases},
-  note   = {Under review},
-  year   = {2026}
-}
-```
