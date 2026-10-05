@@ -13,7 +13,7 @@ body:
         below and **include an email address** so the password can be sent to you. GitHub
         issues are public on a public repository, so do not post anything here you would not
         want visible; if you would rather not share your address in the open, email
-        mdmohsinul.kabir@manchester.ac.uk instead.
+        [] instead.
 
   - type: input
     id: name
